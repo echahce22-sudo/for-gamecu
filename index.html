@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;1,400&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --paper-color: #fcfaf2;
+        --spine-color: #e0d8c3;
+        --text-color: #4a4a4a;
+        --accent: #bc8f8f;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0eadd;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    /* Container Utama Buku */
+    .book {
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+        background-color: var(--paper-color);
+        position: relative;
+        box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px 15px 15px 4px;
+        transition: transform 0.5s ease;
+    }
+
+    .book:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Efek Tulang Buku */
+    .book::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+        border-left: 6px solid var(--spine-color);
+        z-index: 10;
+    }
+
+    /* Konten Halaman dengan Animasi Slide */
+    .pages-container {
+        flex: 1;
+        padding: 50px 40px 40px 60px;
+        position: relative;
+        overflow: hidden; /* Penting untuk animasi slide */
+    }
+
+    .page {
+        position: absolute;
+        width: calc(100% - 100px);
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    .page.active {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    .page.exit {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    /* Tipografi */
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: 0.8s 0.3s;
+    }
+
+    .active h2 {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    p {
+        font-family: 'Playfair Display', serif;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    .signature {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2rem;
+        margin-top: 30px;
+        color: var(--accent);
+    }
+
+    /* Navigasi */
+    .nav {
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.3);
+        z-index: 20;
+    }
+
+    .btn {
+        background: none;
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .btn:hover:not(:disabled) {
+        background-color: var(--accent);
+        color: white;
+        box-shadow: 0 5px 15px rgba(188, 143, 143, 0.4);
+    }
+
+    .btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    /* Animasi Ikon Hati */
+    .heart-icon {
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        color: var(--accent);
+        font-size: 1.5rem;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.5; }
+    }
+
+    @media (max-width: 500px) {
+        .book { height: 450px; width: 95%; }
+        .pages-container { padding: 40px 25px 30px 45px; }
+    }
+
+    p {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #555;
+    margin: 0;
+    
+    /* Tambahan agar bisa di-scroll kalau kepanjangan */
+    max-height: 300px; /* Batasi tinggi teks */
+    overflow-y: auto;  /* Munculkan scrollbar jika perlu */
+    padding-right: 10px;
+}
+
+/* Biar scrollbar-nya cantik & tipis */
+p::-webkit-scrollbar {
+    width: 4px;
+}
+p::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="book">
+    <div class="pages-container">
+        <div class="page active">
+            <h2>Dear, Dappa, My yeobo, My love, My Gamecu, My Favorite Boyy</h2>
+            <p>hihii,, kadang ada perasaan yang susah diungkapkan lewat kata kata langsung. jadi, aku tulis disini biar kamu bisa baca ini pelan pelan yaw :3 </p>
+        </div>
+
+        <div class="page">
+        <h2></h2>
+            <p>hai dappa kesayangan nya aku, how r u todayy? i hope u loving me today ahaha.
+                kamu tau ga apa yang lebih banyak dari 100 Triliyun di dunia ini, yashh rasa sayang dan rasa bersyukur aku hihi.
+                aku sangat sangat bersyukur tau karena aku punyaa someone that very berry cutee kindd handsome and gorgeous, aku gatau gimana hidup aku kalo aku ga pernah ketemu sama seseorang yang seperti kamuu.
+                kamu cuma satu, only one, gaada yang seperti kamu, cowo banyak ya, tapi aku gamau cowo, tapi kalo cowonya dappa aku majuu paling depann.
+            </p>
+        </div>
+
+        <div class="page">
+            <h2></h2>
+            <p>bolehh jujur?? aku tuhh sayang banget sama kamu, bahkan ketika aku ga sama kamu perasaan aku tetep sama, kalo disuru milih i will always choose u,
+                aku selalu kepikiran gini waktu itu, kalo pun aku ga sama daffa lagi, apa aku bakal nemuin orang yang lebih baik?? tapi sayangnya aku ga pernah mencari "yang lebih baik" tapi aku selalu mencari, apakah ada yang kaya daffa?
+                nyatanya aku ga akan bisa nemuin kamu di orang lain, kamu ya kamu, cumaa adaa di diri kamu sendiri, yang aku mau bukan orang lain yang better, tapi aku tetep mau nya dappaa, gamecunya akuu.
+            </p>
+        </div>
+
+        <div class="page">
+            <h2></h2>
+            <p>dan yaa akhirnya, i'm with u againn, aku seneng banget tauu hehe, kaya akhirnya aku mendapatkan warna yang telah hilang di dalam hidup aku, kalo apa apa tuh aku jadi semangat dan jadi good mood teruss yay.
+                pokoknya makasi banyak ya, kamu ga pernah berubah dari sebelumnya, masii daffa yang aku kenal hehe, ada sih yang berubah, cuma berubah makinn ganteng ajaaa anjaii. aku mauu kalo kita bareng terus yaa!!</p>
+
+        </div>
+
+         <div class="page">
+            <h2></h2>
+            <p>i knoww we are not in relationship right?? but actually kita menjalani hari hari bersama dengan begitu manis ya hahaa. tapi mau kita gimana pun asalkan tetep sama kamuu aku selalu suka kok.
+                kalo dibilang kita memulai yang baru, aku juga ga begitu yakin, aku takut kalo aku masi belum bisa memperbaiki diri aku, begitu juga kamu biar relation kita kedepannya bisa lebih baikk lagi tentu nyaa. aku gamau
+                merasa kehilangan lagi hehe, aku bener bener mau menjaga kedeketan kita yang sekarang, makanya mungkin kadang aku kalo lagi excitedd banget tuh suka kepikiran, apa gapapa ya aku excited banget, takut ya gimana gitu, kan kita gaada apa apa ya,
+                aku cuma pengen ngejaga hubungan kita aja, dann sekaligus menjaga kamu nya hihii.
+                maacii yaa kamu selalu care ke aku, apalagi kalo soal makan ya, maap kalo sempet bikin kesel pas aku susah mam. maaci jugaa karena kamu selalu ngasi perasaan ataupun sesuatu itu dengan tulus buat akuu (iyakan? hehe)
+                kamu juga selaluu sabarr ngadepin keadaan aku yang entah lagi bad mood, atau suka ngambek gajelas hehe. kamu selalu berusaha buat nyari cara gimana bikin mood aku kembali baik lagii. yaa walaupun mungkin
+                malah jadi bikin mood kamu keganggu juga yaa, aku minta maaf yaa.
+            </p>
+
+        </div>
+        <div class="page">
+            <h2></h2>
+            <p>kamu jaga kesehatan teruss yaahh, jangan banyak begadang, kecuali kalo nemenin aku hehe. aku peduli banget sama kamuu, soo jaga diri baik baikk yaa, hal buruk atau apapun itu bahkan kamu dapet luka gores kecil ajaa
+                aku gamau yaaa, kamu harus selalu baik baik ajaa, kalo ada apa apa aku siap jadi tempat cerita ternyaman kamuuu. sekali lagi aku sayang banget sama kamu, aku sayang dengan cara aku sendiri, walaupun aku mungkin ga bisa ngasi 
+                banyak yaa, itu juga aku cuma ngasi waktu chattan ajaa buat kamu wkwk, walaupun mungkin di lingkungan aku sendiri tidak mendukung, gimaana pun itu aku akan selalu menyayangi kamuu. aku tuh bener bener beruntung banget
+                punya kamu, di kehidupan seharri hari aku yang menurut aku berisik dan melelahkan tapi kamu selalu ada dan menjadi tempat ternyaman dan aman buat akuu, makasi ya kamu selalu dengerin cerita akuu, kamu iitu kebahagiaan aku yang selalu ku syukuri tiap hariiii.
+            </p>
+
+        </div>
+        
+
+        <div class="page">
+            <h2>sama sama terus yaaaa?</h2>
+            <p>pokoknya kitaa bareng terus yaa, walaupun ga bareng secara berdampingan, tapi hati kita tetep tertuju satu sama lainn. semoga kamuu ga bosen bosen ya sama aku hehe. kalo tiba tiba bosenn gituu bilang langsung aja yaa, jangan berubah secara tiba tiba yaa, tapi aku yakin sihh emang kamu bakalan bosen ama manusia se imup gue ini wkwk.
+                tapi yaa namanya ovt suka gituu hal kecil aja di pikirinn. sebenernya yahh kamu beda dikit, atau lagi slowresp tuh aku suka banyak mikirin tauuu hehe, gajelas emang. tapi ya gitu aku juga gampang kepikiran orang nya,
+                dan ga pernah tentang kamu gaada yang aku pikirinnn. 
+kita saling jaga satu sama lain aja yaa, aku berusaha jagain perasaan kamu, aku gamau bikin kamu marah bikin kamu sedihh. dan sebaliknya yaa, aku gamau kalo semisalnya dibikin sedihh hehe, aku bingung kalo sedih nanti sedihnya kesiapaa
+                aku harus keliatan baik baik aja di rumah ini wkwkwk, bahasanya apaan banget yaa. tapii sejauhh inii kamuu yang selalu bikin aku bahagiaaa, tiap hari makin sayang dehhh.
+            
+            
+                sekali lagii nihh, kamu adalah orang yang paling berharga buat akuu sayang. aku bakal tetep milih kamu, sayangin kamu gimana pun keadaannya, jadii jangan pernah pergii yaaa :c
+            
+            makasii yaa udah di baca sampe sini, hope u always have a nicee dayy tayangkuu, lovee u sooo bad, and miss youu, mmuahh muahhh ^3^ 
+            </p>
+            <div class="signature">With love, esyacuyy</div>
+        </div>
+
+        <div class="flower">🌸</div>
+    </div>
+
+    <div class="nav">
+        <button class="btn" id="prevBtn" disabled>Back</button>
+        <span class="page-number" id="pageNum">1 / 3</span>
+        <button class="btn" id="nextBtn">Next</button>
+    </div>
+</div>
+
+<script>
+    const pages = document.querySelectorAll('.page');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const pageNum = document.getElementById('pageNum');
+    let currentPage = 0;
+
+    function updateBook() {
+        pages.forEach((page, index) => {
+            page.classList.toggle('active', index === currentPage);
+        });
+
+        pageNum.innerText = `${currentPage + 1} / ${pages.length}`;
+        prevBtn.disabled = currentPage === 0;
+        
+        if (currentPage === pages.length - 1) {
+            nextBtn.innerText = "Close";
+        } else {
+            nextBtn.innerText = "Next";
+        }
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < pages.length - 1) {
+            currentPage++;
+            updateBook();
+        } else {
+            alert("ditutup dengan penuh cinta, esyacuyy. ✨");
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            updateBook();
+        }
+    });
+</script>
+
+</body>
+</html>
